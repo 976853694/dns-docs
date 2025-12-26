@@ -1,0 +1,34 @@
+{
+  "zh": {
+    "title": "文档",
+    "items": [
+      {
+        "text": "指南",
+        "children": [
+          { "text": "快速开始", "link": "/guide/getting-started" },
+          { "text": "安装", "link": "/guide/installation" }
+        ]
+      },
+      {
+        "text": "API 参考",
+        "link": "/api/"
+      }
+    ]
+  },
+  "en": {
+    "title": "Documentation",
+    "items": [
+      {
+        "text": "Guide",
+        "children": [
+          { "text": "Getting Started", "link": "/guide/getting-started" },
+          { "text": "Installation", "link": "/guide/installation" }
+        ]
+      },
+      {
+        "text": "API Reference",
+        "link": "/api/"
+      }
+    ]
+  }
+}

@@ -1,0 +1,204 @@
+/* CSS Variables */
+:root {
+    --header-height: 3.5rem;
+    --sidebar-width: 280px;
+    --toc-width: 200px;
+    --content-max-width: 800px;
+    --transition-speed: 0.3s;
+}
+
+/* Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    z-index: 100;
+    gap: 1rem;
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-left: auto;
+}
+
+/* Menu Toggle (Mobile) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 1.5rem;
+    height: 1.25rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.menu-toggle span {
+    width: 100%;
+    height: 2px;
+    border-radius: 2px;
+    transition: var(--transition-speed);
+}
+
+/* Search Box */
+.search-box {
+    position: relative;
+}
+
+.search-box input {
+    width: 200px;
+    padding: 0.4rem 0.75rem;
+    border: 1px solid;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    outline: none;
+    transition: var(--transition-speed);
+}
+
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 300px;
+    overflow-y: auto;
+    border-radius: 4px;
+    display: none;
+    z-index: 200;
+}
+
+.search-results.active {
+    display: block;
+}
+
+.search-result-item {
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    border-bottom: 1px solid;
+}
+
+.search-result-item:hover {
+    opacity: 0.8;
+}
+
+/* Language Select */
+.lang-select {
+    padding: 0.4rem 0.5rem;
+    border: 1px solid;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    background: transparent;
+    border: none;
+    font-size: 1.25rem;
+    cursor: pointer;
+    padding: 0.25rem;
+}
+
+/* Container Layout */
+.container {
+    display: flex;
+    margin-top: var(--header-height);
+    min-height: calc(100vh - var(--header-height));
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    width: var(--sidebar-width);
+    height: calc(100vh - var(--header-height));
+    overflow-y: auto;
+    padding: 1.5rem 1rem;
+    transition: transform var(--transition-speed);
+    z-index: 50;
+}
+
+.sidebar-nav a {
+    display: block;
+    padding: 0.4rem 0.75rem;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: var(--transition-speed);
+}
+
+.sidebar-nav a.active {
+    font-weight: 600;
+}
+
+.sidebar-nav .folder-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+}
+
+.sidebar-nav .folder-title::after {
+    content: '▼';
+    font-size: 0.6rem;
+    transition: transform var(--transition-speed);
+}
+
+.sidebar-nav .folder.collapsed .folder-title::after {
+    transform: rotate(-90deg);
+}
+
+.sidebar-nav .folder-children {
+    padding-left: 0.75rem;
+    overflow: hidden;
+    transition: max-height var(--transition-speed);
+}
+
+.sidebar-nav .folder.collapsed .folder-children {
+    max-height: 0 !important;
+}
+
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 40;
+}
