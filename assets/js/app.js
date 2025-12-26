@@ -21,7 +21,7 @@ const App = (function() {
             Router.init({
                 defaultLang: config.defaultLang,
                 languages: config.languages,
-                defaultPath: '/guide/getting-started'
+                defaultPath: '/guide/index'
             });
             
             // 初始化渲染器
