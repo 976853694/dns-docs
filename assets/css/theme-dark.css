@@ -1,0 +1,135 @@
+/* Dark Theme */
+:root {
+    --bg-color: #0d1117;
+    --bg-secondary: #161b22;
+    --text-color: #c9d1d9;
+    --text-secondary: #8b949e;
+    --border-color: #30363d;
+    --link-color: #58a6ff;
+    --accent-color: #58a6ff;
+    --code-bg: #161b22;
+    --header-bg: #161b22;
+    --sidebar-bg: #0d1117;
+    --hover-bg: #21262d;
+    --active-bg: #1f3a5f;
+    --mark-bg: #634d00;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.header {
+    background-color: var(--header-bg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    color: var(--text-color);
+}
+
+.menu-toggle span {
+    background-color: var(--text-color);
+}
+
+.search-box input {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+.search-box input:focus {
+    border-color: var(--accent-color);
+}
+
+.search-results {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.search-result-item {
+    border-color: var(--border-color);
+}
+
+.search-result-item:hover {
+    background-color: var(--hover-bg);
+}
+
+.lang-select {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+.sidebar {
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--border-color);
+}
+
+.sidebar-nav a {
+    color: var(--text-secondary);
+}
+
+.sidebar-nav a:hover {
+    background-color: var(--hover-bg);
+    color: var(--text-color);
+}
+
+.sidebar-nav a.active {
+    background-color: var(--active-bg);
+    color: var(--accent-color);
+}
+
+.sidebar-nav .folder-title {
+    color: var(--text-color);
+}
+
+.doc-content h1 {
+    border-color: var(--border-color);
+}
+
+.doc-content a {
+    color: var(--link-color);
+}
+
+.doc-content code {
+    background-color: var(--code-bg);
+    color: var(--text-color);
+}
+
+.doc-content pre {
+    background-color: var(--code-bg);
+}
+
+.doc-content blockquote {
+    border-color: var(--border-color);
+    background-color: var(--bg-secondary);
+}
+
+.doc-content th {
+    background-color: var(--bg-secondary);
+}
+
+.doc-content th, .doc-content td {
+    border-color: var(--border-color);
+}
+
+.toc a {
+    color: var(--text-secondary);
+}
+
+.not-found a {
+    background-color: var(--accent-color);
+    color: #ffffff;
+}
+
+mark {
+    background-color: var(--mark-bg);
+}
+
+/* Override highlight.js for dark theme */
+.hljs {
+    background: var(--code-bg) !important;
+}

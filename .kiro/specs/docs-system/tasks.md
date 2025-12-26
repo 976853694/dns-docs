@@ -6,13 +6,13 @@
 
 ## Tasks
 
-- [-] 1. 项目结构和基础框架
+- [x] 1. 项目结构和基础框架
   - [x] 1.1 创建目录结构和配置文件
     - 创建 `config/`、`assets/css/`、`assets/js/`、`docs/zh/`、`docs/en/` 目录
     - 创建 `config/config.json` 站点配置
     - 创建 `config/nav.json` 导航配置
     - _Requirements: 2.1, 6.1_
-  - [-] 1.2 创建主入口 HTML 和基础样式
+  - [x] 1.2 创建主入口 HTML 和基础样式
     - 更新 `index.html` 包含文档系统布局
     - 创建 `assets/css/main.css` 主样式（使用 CSS Grid/Flexbox 布局）
     - 添加 viewport meta 标签确保移动端正确缩放
