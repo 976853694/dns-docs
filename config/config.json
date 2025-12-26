@@ -1,8 +1,8 @@
 {
-  "title": "六趣dns Docs",
-  "description": "项目文档",
+  "title": "DNS Docs",
+  "description": "DNS 文档系统",
   "defaultLang": "zh",
   "languages": ["zh", "en"],
   "themeColor": "#3498db",
-  "repo": "https://github.com/976853694/cloudflare-DNS/"
+  "repo": "https://github.com/liu/dns-docs"
 }

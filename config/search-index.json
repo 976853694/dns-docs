@@ -3,28 +3,52 @@
     {
       "title": "快速开始",
       "path": "/guide/getting-started",
-      "content": "本指南将帮助你快速上手文档系统，了解基本配置和使用方法。",
-      "keywords": ["入门", "开始", "配置", "安装"]
+      "content": "本指南将帮助你快速了解 DNS 文档系统的基本使用方法。",
+      "keywords": ["入门", "开始", "DNS", "文档"]
     },
     {
-      "title": "安装指南",
+      "title": "安装配置",
       "path": "/guide/installation",
-      "content": "详细介绍如何安装和部署文档系统到 GitHub Pages。",
-      "keywords": ["安装", "部署", "GitHub Pages"]
+      "content": "详细介绍如何安装和配置 DNS 服务。",
+      "keywords": ["安装", "配置", "部署"]
+    },
+    {
+      "title": "DNS 概述",
+      "path": "/basics/overview",
+      "content": "DNS 域名系统的基本概念和工作原理介绍。",
+      "keywords": ["DNS", "域名", "解析", "原理"]
+    },
+    {
+      "title": "记录类型",
+      "path": "/basics/record-types",
+      "content": "常见 DNS 记录类型详解：A、AAAA、CNAME、MX、TXT 等。",
+      "keywords": ["A记录", "CNAME", "MX", "TXT", "记录类型"]
     }
   ],
   "en": [
     {
       "title": "Getting Started",
       "path": "/guide/getting-started",
-      "content": "This guide will help you get started with the documentation system.",
-      "keywords": ["start", "begin", "config", "setup"]
+      "content": "This guide will help you get started with the DNS documentation system.",
+      "keywords": ["start", "begin", "DNS", "docs"]
     },
     {
       "title": "Installation",
       "path": "/guide/installation",
-      "content": "Learn how to install and deploy the documentation system to GitHub Pages.",
-      "keywords": ["install", "deploy", "GitHub Pages"]
+      "content": "Learn how to install and configure DNS services.",
+      "keywords": ["install", "config", "deploy"]
+    },
+    {
+      "title": "DNS Overview",
+      "path": "/basics/overview",
+      "content": "Introduction to DNS concepts and how it works.",
+      "keywords": ["DNS", "domain", "resolution", "basics"]
+    },
+    {
+      "title": "Record Types",
+      "path": "/basics/record-types",
+      "content": "Detailed explanation of DNS record types: A, AAAA, CNAME, MX, TXT, etc.",
+      "keywords": ["A record", "CNAME", "MX", "TXT", "record types"]
     }
   ]
 }

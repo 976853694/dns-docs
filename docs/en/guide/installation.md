@@ -1,72 +1,85 @@
-# Installation Guide
+# Installation
 
-This document explains how to deploy the documentation system to GitHub Pages.
+This document explains how to install and configure DNS services.
 
-## Prerequisites
+## Requirements
 
-- GitHub account
-- Basic Git knowledge
+- Operating System: Linux / Windows / macOS
+- Network: Ensure port 53 is available
 
-## Deployment Steps
+## Common DNS Servers
 
-### 1. Fork or Clone the Repository
+### BIND
+
+BIND is the most widely used DNS server software.
 
 ```bash
-git clone https://github.com/your-username/docs-system.git
-cd docs-system
+# Ubuntu/Debian
+sudo apt install bind9
+
+# CentOS/RHEL
+sudo yum install bind
 ```
 
-### 2. Modify Configuration
+### CoreDNS
 
-Edit the `config/config.json` file:
+CoreDNS is a flexible, extensible DNS server.
 
-```json
-{
-  "title": "Your Documentation Title",
-  "description": "Documentation description",
-  "defaultLang": "en",
-  "languages": ["zh", "en"],
-  "repo": "https://github.com/your-username/your-repo"
-}
+```bash
+# Download CoreDNS
+wget https://github.com/coredns/coredns/releases/download/v1.11.1/coredns_1.11.1_linux_amd64.tgz
+tar -xzf coredns_1.11.1_linux_amd64.tgz
 ```
 
-### 3. Add Documentation
+## Basic Configuration
 
-Add Markdown files under the `docs/` directory:
+### Configuration File Example
 
-```
-docs/
-├── zh/
-│   └── guide/
-│       └── your-doc.md
-└── en/
-    └── guide/
-        └── your-doc.md
+```conf
+zone "example.com" {
+    type master;
+    file "/etc/bind/zones/example.com.zone";
+};
 ```
 
-### 4. Update Navigation
+### Zone File Example
 
-Edit `config/nav.json` to add navigation links for new documents.
+```
+$TTL 86400
+@   IN  SOA ns1.example.com. admin.example.com. (
+        2024010101  ; Serial
+        3600        ; Refresh
+        1800        ; Retry
+        604800      ; Expire
+        86400       ; Minimum TTL
+)
+    IN  NS  ns1.example.com.
+    IN  A   192.168.1.1
+www IN  A   192.168.1.2
+```
 
-### 5. Enable GitHub Pages
+## Verify Configuration
 
-1. Go to repository Settings
-2. Find the Pages option
-3. Select `main` branch as Source
-4. Save and wait for deployment
+```bash
+# Check configuration syntax
+named-checkconf
 
-## Local Preview
+# Check zone file
+named-checkzone example.com /etc/bind/zones/example.com.zone
+```
 
-Simply open the `index.html` file in your browser to preview.
+## Troubleshooting
 
-> **Note**: Due to browser security restrictions, some features may be limited in local preview. Consider using a local server.
+### Port Already in Use
 
-## FAQ
+Check if port 53 is occupied:
 
-### Document Loading Failed
+```bash
+sudo lsof -i :53
+```
 
-Check if the file path is correct and ensure the Markdown file exists in the corresponding directory.
+### Resolution Failed
 
-### Search Not Working
-
-Make sure you have updated the `config/search-index.json` file.
+1. Check firewall settings
+2. Confirm DNS service is running
+3. Verify configuration file syntax

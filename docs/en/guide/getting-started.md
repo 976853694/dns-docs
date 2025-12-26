@@ -1,53 +1,44 @@
 # Getting Started
 
-Welcome to the documentation system! This guide will help you get started quickly.
+Welcome to the DNS Documentation! This guide will help you get started quickly.
 
 ## Introduction
 
-This is a static documentation system based on GitHub Pages with the following features:
+DNS (Domain Name System) is one of the core infrastructures of the Internet, responsible for translating human-readable domain names into computer-recognizable IP addresses.
 
-- 📝 Markdown support
-- 🔍 Full-text search
-- 🌙 Light/Dark theme toggle
-- 🌐 Multi-language support
-- 📱 Responsive design
+## Documentation Navigation
 
-## Basic Usage
+### 🚀 Getting Started
 
-### Browse Documentation
+- [Installation](/guide/installation) - Learn how to install and configure DNS services
 
-Use the left sidebar to browse the documentation. Click on links to view content.
+### 📚 DNS Basics
 
-### Search
+- [DNS Overview](/basics/overview) - Understand DNS concepts
+- [Record Types](/basics/record-types) - Learn about DNS record types
 
-Enter keywords in the search box at the top to quickly find relevant documents.
+### 📖 API Reference
 
-### Toggle Theme
+- [API Documentation](/api/) - View API specifications
 
-Click the 🌙/☀️ button in the top right corner to switch between light and dark themes.
+## Quick Example
 
-## Code Examples
+Query A record for a domain:
 
-Here's a JavaScript example:
-
-```javascript
-// Initialize the app
-document.addEventListener('DOMContentLoaded', () => {
-    App.init();
-});
+```bash
+nslookup example.com
 ```
 
-Python example:
+Or use the dig command:
 
-```python
-def hello(name):
-    """Print a greeting"""
-    print(f"Hello, {name}!")
-
-hello("World")
+```bash
+dig example.com A
 ```
 
 ## Next Steps
 
-- Check the [Installation Guide](/guide/installation) to learn how to deploy
-- Read the API documentation for more features
+We recommend reading the documentation in this order:
+
+1. Read [DNS Overview](/basics/overview) to understand basic concepts
+2. Learn [Record Types](/basics/record-types) to master common records
+3. Check [Installation](/guide/installation) to start practicing

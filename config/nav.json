@@ -1,24 +1,42 @@
 {
   "zh": {
-    "title": "文档",
+    "title": "DNS 文档",
     "items": [
       {
         "text": "指南",
         "children": [
           { "text": "快速开始", "link": "/guide/getting-started" },
-          { "text": "安装", "link": "/guide/installation" }
+          { "text": "安装配置", "link": "/guide/installation" }
         ]
+      },
+      {
+        "text": "DNS 基础",
+        "children": [
+          { "text": "DNS 概述", "link": "/basics/overview" },
+          { "text": "记录类型", "link": "/basics/record-types" }
+        ]
+      },
+      {
+        "text": "API 参考",
+        "link": "/api/"
       }
     ]
   },
   "en": {
-    "title": "Documentation",
+    "title": "DNS Documentation",
     "items": [
       {
         "text": "Guide",
         "children": [
           { "text": "Getting Started", "link": "/guide/getting-started" },
           { "text": "Installation", "link": "/guide/installation" }
+        ]
+      },
+      {
+        "text": "DNS Basics",
+        "children": [
+          { "text": "DNS Overview", "link": "/basics/overview" },
+          { "text": "Record Types", "link": "/basics/record-types" }
         ]
       },
       {

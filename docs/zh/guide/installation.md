@@ -1,72 +1,85 @@
-# 安装指南
+# 安装配置
 
-本文档介绍如何将文档系统部署到 GitHub Pages。
+本文档介绍如何安装和配置 DNS 服务。
 
-## 前置要求
+## 环境要求
 
-- GitHub 账号
-- Git 基础知识
+- 操作系统：Linux / Windows / macOS
+- 网络：确保 53 端口可用
 
-## 部署步骤
+## 常用 DNS 服务器
 
-### 1. Fork 或克隆仓库
+### BIND
+
+BIND 是最广泛使用的 DNS 服务器软件。
 
 ```bash
-git clone https://github.com/your-username/docs-system.git
-cd docs-system
+# Ubuntu/Debian
+sudo apt install bind9
+
+# CentOS/RHEL
+sudo yum install bind
 ```
 
-### 2. 修改配置
+### CoreDNS
 
-编辑 `config/config.json` 文件：
+CoreDNS 是一个灵活、可扩展的 DNS 服务器。
 
-```json
-{
-  "title": "你的文档标题",
-  "description": "文档描述",
-  "defaultLang": "zh",
-  "languages": ["zh", "en"],
-  "repo": "https://github.com/your-username/your-repo"
-}
+```bash
+# 下载 CoreDNS
+wget https://github.com/coredns/coredns/releases/download/v1.11.1/coredns_1.11.1_linux_amd64.tgz
+tar -xzf coredns_1.11.1_linux_amd64.tgz
 ```
 
-### 3. 添加文档
+## 基本配置
 
-在 `docs/` 目录下添加 Markdown 文件：
+### 配置文件示例
 
-```
-docs/
-├── zh/
-│   └── guide/
-│       └── your-doc.md
-└── en/
-    └── guide/
-        └── your-doc.md
+```conf
+zone "example.com" {
+    type master;
+    file "/etc/bind/zones/example.com.zone";
+};
 ```
 
-### 4. 更新导航
+### Zone 文件示例
 
-编辑 `config/nav.json` 添加新文档的导航链接。
+```
+$TTL 86400
+@   IN  SOA ns1.example.com. admin.example.com. (
+        2024010101  ; Serial
+        3600        ; Refresh
+        1800        ; Retry
+        604800      ; Expire
+        86400       ; Minimum TTL
+)
+    IN  NS  ns1.example.com.
+    IN  A   192.168.1.1
+www IN  A   192.168.1.2
+```
 
-### 5. 启用 GitHub Pages
+## 验证配置
 
-1. 进入仓库 Settings
-2. 找到 Pages 选项
-3. Source 选择 `main` 分支
-4. 保存并等待部署
+```bash
+# 检查配置语法
+named-checkconf
 
-## 本地预览
-
-直接在浏览器中打开 `index.html` 文件即可预览。
-
-> **提示**: 由于浏览器安全限制，本地预览时某些功能可能受限。建议使用本地服务器。
+# 检查 zone 文件
+named-checkzone example.com /etc/bind/zones/example.com.zone
+```
 
 ## 常见问题
 
-### 文档加载失败
+### 端口被占用
 
-检查文件路径是否正确，确保 Markdown 文件存在于对应目录。
+检查 53 端口是否被其他服务占用：
 
-### 搜索不工作
+```bash
+sudo lsof -i :53
+```
 
-确保已更新 `config/search-index.json` 文件。
+### 解析失败
+
+1. 检查防火墙设置
+2. 确认 DNS 服务已启动
+3. 验证配置文件语法
