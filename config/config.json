@@ -1,8 +1,8 @@
 {
-  "title": "DNS Docs",
-  "description": "DNS 文档系统",
+  "title": "Cloudflare DNS 分发系统",
+  "description": "Cloudflare DNS 二级域名分发系统文档",
   "defaultLang": "zh",
-  "languages": ["zh", "en"],
-  "themeColor": "#3498db",
-  "repo": "https://github.com/liu/dns-docs"
+  "languages": ["zh"],
+  "themeColor": "#f38020",
+  "repo": "https://github.com/976853694/cloudflare-DNS"
 }

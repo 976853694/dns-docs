@@ -1,47 +1,22 @@
 {
   "zh": {
-    "title": "DNS 文档",
+    "title": "文档中心",
     "items": [
       {
-        "text": "指南",
+        "text": "快速开始",
         "children": [
-          { "text": "快速开始", "link": "/guide/getting-started" },
-          { "text": "安装配置", "link": "/guide/installation" }
+          { "text": "文档首页", "link": "/guide/index" },
+          { "text": "安装部署", "link": "/guide/installation" },
+          { "text": "使用指南", "link": "/guide/usage" },
+          { "text": "更新升级", "link": "/guide/update" }
         ]
       },
       {
-        "text": "DNS 基础",
+        "text": "API 文档",
         "children": [
-          { "text": "DNS 概述", "link": "/basics/overview" },
-          { "text": "记录类型", "link": "/basics/record-types" }
+          { "text": "用户端 API", "link": "/api/user" },
+          { "text": "管理端 API", "link": "/api/admin" }
         ]
-      },
-      {
-        "text": "API 参考",
-        "link": "/api/"
-      }
-    ]
-  },
-  "en": {
-    "title": "DNS Documentation",
-    "items": [
-      {
-        "text": "Guide",
-        "children": [
-          { "text": "Getting Started", "link": "/guide/getting-started" },
-          { "text": "Installation", "link": "/guide/installation" }
-        ]
-      },
-      {
-        "text": "DNS Basics",
-        "children": [
-          { "text": "DNS Overview", "link": "/basics/overview" },
-          { "text": "Record Types", "link": "/basics/record-types" }
-        ]
-      },
-      {
-        "text": "API Reference",
-        "link": "/api/"
       }
     ]
   }
