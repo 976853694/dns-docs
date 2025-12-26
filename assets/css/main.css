@@ -202,3 +202,252 @@ body {
     background: rgba(0, 0, 0, 0.5);
     z-index: 40;
 }
+
+/* Main Content */
+.content {
+    flex: 1;
+    display: flex;
+    margin-left: var(--sidebar-width);
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.doc-content {
+    flex: 1;
+    max-width: var(--content-max-width);
+    min-width: 0;
+}
+
+/* TOC */
+.toc {
+    width: var(--toc-width);
+    position: sticky;
+    top: calc(var(--header-height) + 2rem);
+    max-height: calc(100vh - var(--header-height) - 4rem);
+    overflow-y: auto;
+    font-size: 0.85rem;
+}
+
+.toc-title {
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.toc a {
+    display: block;
+    padding: 0.25rem 0;
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity var(--transition-speed);
+}
+
+.toc a:hover {
+    opacity: 1;
+}
+
+.toc a.toc-h3 {
+    padding-left: 1rem;
+}
+
+/* Document Styles */
+.doc-content h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid;
+}
+
+.doc-content h2 {
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem;
+}
+
+.doc-content h3 {
+    font-size: 1.25rem;
+    margin: 1.5rem 0 0.75rem;
+}
+
+.doc-content p {
+    margin-bottom: 1rem;
+}
+
+.doc-content a {
+    text-decoration: none;
+}
+
+.doc-content a:hover {
+    text-decoration: underline;
+}
+
+.doc-content ul, .doc-content ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+
+.doc-content li {
+    margin-bottom: 0.25rem;
+}
+
+.doc-content code {
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 0.875em;
+}
+
+.doc-content pre {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 6px;
+    overflow-x: auto;
+}
+
+.doc-content pre code {
+    padding: 0;
+    background: transparent;
+}
+
+.doc-content blockquote {
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+    border-left: 4px solid;
+    opacity: 0.9;
+}
+
+.doc-content table {
+    width: 100%;
+    margin-bottom: 1rem;
+    border-collapse: collapse;
+}
+
+.doc-content th, .doc-content td {
+    padding: 0.5rem;
+    border: 1px solid;
+    text-align: left;
+}
+
+/* Anchor Links */
+.doc-content h1[id], .doc-content h2[id], .doc-content h3[id] {
+    scroll-margin-top: calc(var(--header-height) + 1rem);
+}
+
+.anchor-link {
+    opacity: 0;
+    margin-left: 0.5rem;
+    text-decoration: none;
+    transition: opacity var(--transition-speed);
+}
+
+.doc-content h1:hover .anchor-link,
+.doc-content h2:hover .anchor-link,
+.doc-content h3:hover .anchor-link {
+    opacity: 0.5;
+}
+
+/* Loading & Error States */
+.loading {
+    text-align: center;
+    padding: 3rem;
+    opacity: 0.6;
+}
+
+.not-found {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.not-found h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    border: none;
+}
+
+.not-found a {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+/* Search Highlight */
+mark {
+    padding: 0.1rem 0.2rem;
+    border-radius: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 1280px) {
+    .toc {
+        display: none;
+    }
+}
+
+@media (max-width: 1024px) {
+    :root {
+        --sidebar-width: 240px;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .search-box input {
+        width: 120px;
+    }
+    
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    
+    .sidebar.open {
+        transform: translateX(0);
+    }
+    
+    .sidebar-overlay.active {
+        display: block;
+    }
+    
+    .content {
+        margin-left: 0;
+        padding: 1.5rem 1rem;
+    }
+    
+    .doc-content h1 {
+        font-size: 1.75rem;
+    }
+    
+    .doc-content h2 {
+        font-size: 1.35rem;
+    }
+    
+    .doc-content pre {
+        margin-left: -1rem;
+        margin-right: -1rem;
+        border-radius: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-right {
+        gap: 0.5rem;
+    }
+    
+    .search-box input {
+        width: 100px;
+    }
+    
+    .lang-select {
+        padding: 0.3rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* Touch-friendly */
+@media (hover: none) {
+    .anchor-link {
+        opacity: 0.3;
+    }
+}
