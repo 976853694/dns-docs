@@ -19,8 +19,8 @@
     - 使用相对单位（rem, %, vw/vh）确保自适应
     - _Requirements: 4.1, 4.3_
 
-- [ ] 2. 路由模块实现
-  - [ ] 2.1 实现 Router 模块
+- [x] 2. 路由模块实现
+  - [x] 2.1 实现 Router 模块
     - 创建 `assets/js/router.js`
     - 实现 URL 解析（提取语言和路径）
     - 实现 `navigate()` 导航方法
@@ -31,8 +31,8 @@
     - **Property 8: URL 语言标识**
     - **Validates: Requirements 1.1, 6.2, 6.4**
 
-- [ ] 3. Markdown 渲染模块
-  - [ ] 3.1 实现 Renderer 模块
+- [-] 3. Markdown 渲染模块
+  - [-] 3.1 实现 Renderer 模块
     - 创建 `assets/js/renderer.js`
     - 集成 marked.js 和 highlight.js（CDN）
     - 实现 Markdown 文件加载和渲染
