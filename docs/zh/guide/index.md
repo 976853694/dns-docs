@@ -97,4 +97,4 @@ docker compose pull && docker compose down && docker compose up -d
 ## 版本信息
 
 - **当前版本**: v2.7
-- **更新时间**: 2024年12月
+- **更新时间**: 2025年12月

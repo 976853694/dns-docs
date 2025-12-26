@@ -5,7 +5,7 @@
 const Router = (function() {
     let config = {
         defaultLang: 'zh',
-        languages: ['zh', 'en'],
+        languages: ['zh'],
         defaultPath: '/guide/index'
     };
     
