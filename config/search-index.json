@@ -1,0 +1,30 @@
+{
+  "zh": [
+    {
+      "title": "快速开始",
+      "path": "/guide/getting-started",
+      "content": "本指南将帮助你快速上手文档系统，了解基本配置和使用方法。",
+      "keywords": ["入门", "开始", "配置", "安装"]
+    },
+    {
+      "title": "安装指南",
+      "path": "/guide/installation",
+      "content": "详细介绍如何安装和部署文档系统到 GitHub Pages。",
+      "keywords": ["安装", "部署", "GitHub Pages"]
+    }
+  ],
+  "en": [
+    {
+      "title": "Getting Started",
+      "path": "/guide/getting-started",
+      "content": "This guide will help you get started with the documentation system.",
+      "keywords": ["start", "begin", "config", "setup"]
+    },
+    {
+      "title": "Installation",
+      "path": "/guide/installation",
+      "content": "Learn how to install and deploy the documentation system to GitHub Pages.",
+      "keywords": ["install", "deploy", "GitHub Pages"]
+    }
+  ]
+}

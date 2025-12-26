@@ -31,8 +31,8 @@
     - **Property 8: URL 语言标识**
     - **Validates: Requirements 1.1, 6.2, 6.4**
 
-- [-] 3. Markdown 渲染模块
-  - [-] 3.1 实现 Renderer 模块
+- [x] 3. Markdown 渲染模块
+  - [x] 3.1 实现 Renderer 模块
     - 创建 `assets/js/renderer.js`
     - 集成 marked.js 和 highlight.js（CDN）
     - 实现 Markdown 文件加载和渲染
@@ -43,7 +43,7 @@
     - **Property 2: Markdown 标题锚点生成**
     - **Property 3: 代码块语法高亮**
     - **Validates: Requirements 1.2, 1.3**
-  - [ ] 3.3 实现 404 错误页面
+  - [x] 3.3 实现 404 错误页面
     - 创建 404 错误处理逻辑
     - _Requirements: 1.4_
 
@@ -51,8 +51,8 @@
   - 确保文档可以正常加载和渲染
   - 确保所有测试通过，如有问题请询问用户
 
-- [ ] 5. 侧边栏模块实现
-  - [ ] 5.1 实现 Sidebar 模块
+- [x] 5. 侧边栏模块实现
+  - [x] 5.1 实现 Sidebar 模块
     - 创建 `assets/js/sidebar.js`
     - 实现导航配置加载和渲染
     - 实现层级目录结构
@@ -63,8 +63,8 @@
     - **Property 6: 侧边栏当前项高亮**
     - **Validates: Requirements 2.3, 6.3**
 
-- [ ] 6. 搜索模块实现
-  - [ ] 6.1 实现 Search 模块
+- [x] 6. 搜索模块实现
+  - [x] 6.1 实现 Search 模块
     - 创建 `assets/js/search.js`
     - 创建 `config/search-index.json` 搜索索引
     - 实现关键词搜索算法
@@ -76,8 +76,8 @@
     - **Property 5: 搜索关键词高亮**
     - **Validates: Requirements 3.1, 3.2**
 
-- [ ] 7. 主题模块实现
-  - [ ] 7.1 实现 Theme 模块
+- [-] 7. 主题模块实现
+  - [x] 7.1 实现 Theme 模块
     - 创建 `assets/js/theme.js`
     - 创建 `assets/css/theme-light.css` 和 `assets/css/theme-dark.css`
     - 实现主题切换逻辑
@@ -110,15 +110,15 @@
     - 搜索框自适应布局
     - _Requirements: 4.1, 4.2, 4.3_
 
-- [ ] 11. 主应用整合
-  - [ ] 11.1 创建主应用控制器
+- [x] 11. 主应用整合
+  - [x] 11.1 创建主应用控制器
     - 创建 `assets/js/app.js`
     - 整合所有模块
     - 实现初始化流程
     - _Requirements: All_
 
-- [ ] 12. 示例文档
-  - [ ] 12.1 创建示例文档内容
+- [x] 12. 示例文档
+  - [x] 12.1 创建示例文档内容
     - 创建 `docs/zh/guide/getting-started.md`
     - 创建 `docs/zh/guide/installation.md`
     - 创建 `docs/en/guide/getting-started.md`
