@@ -1,0 +1,130 @@
+/* Light Theme */
+:root {
+    --bg-color: #ffffff;
+    --bg-secondary: #f6f8fa;
+    --text-color: #24292f;
+    --text-secondary: #57606a;
+    --border-color: #d0d7de;
+    --link-color: #0969da;
+    --accent-color: #0969da;
+    --code-bg: #f6f8fa;
+    --header-bg: #ffffff;
+    --sidebar-bg: #f6f8fa;
+    --hover-bg: #eaeef2;
+    --active-bg: #ddf4ff;
+    --mark-bg: #fff8c5;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.header {
+    background-color: var(--header-bg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    color: var(--text-color);
+}
+
+.menu-toggle span {
+    background-color: var(--text-color);
+}
+
+.search-box input {
+    background-color: var(--bg-color);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+.search-box input:focus {
+    border-color: var(--accent-color);
+}
+
+.search-results {
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.search-result-item {
+    border-color: var(--border-color);
+}
+
+.search-result-item:hover {
+    background-color: var(--hover-bg);
+}
+
+.lang-select {
+    background-color: var(--bg-color);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+.sidebar {
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--border-color);
+}
+
+.sidebar-nav a {
+    color: var(--text-secondary);
+}
+
+.sidebar-nav a:hover {
+    background-color: var(--hover-bg);
+    color: var(--text-color);
+}
+
+.sidebar-nav a.active {
+    background-color: var(--active-bg);
+    color: var(--accent-color);
+}
+
+.sidebar-nav .folder-title {
+    color: var(--text-color);
+}
+
+.doc-content h1 {
+    border-color: var(--border-color);
+}
+
+.doc-content a {
+    color: var(--link-color);
+}
+
+.doc-content code {
+    background-color: var(--code-bg);
+    color: var(--text-color);
+}
+
+.doc-content pre {
+    background-color: var(--code-bg);
+}
+
+.doc-content blockquote {
+    border-color: var(--border-color);
+    background-color: var(--bg-secondary);
+}
+
+.doc-content th {
+    background-color: var(--bg-secondary);
+}
+
+.doc-content th, .doc-content td {
+    border-color: var(--border-color);
+}
+
+.toc a {
+    color: var(--text-secondary);
+}
+
+.not-found a {
+    background-color: var(--accent-color);
+    color: #ffffff;
+}
+
+mark {
+    background-color: var(--mark-bg);
+}
