@@ -4,11 +4,11 @@
 
 | 文档 | 说明 |
 |------|------|
-| [安装部署](/guide/installation) | Docker Compose 部署指南 |
-| [使用指南](/guide/usage) | 管理员配置和用户使用说明 |
-| [更新升级](/guide/update) | 版本更新和回滚指南 |
-| [用户端 API](/api/user) | 用户端接口文档 |
-| [管理端 API](/api/admin) | 管理后台接口文档 |
+| [安装部署](#/zh/guide/installation) | Docker Compose 部署指南 |
+| [使用指南](#/zh/guide/usage) | 管理员配置和用户使用说明 |
+| [更新升级](#/zh/guide/update) | 版本更新和回滚指南 |
+| [用户端 API](#/zh/api/user) | 用户端接口文档 |
+| [管理端 API](#/zh/api/admin) | 管理后台接口文档 |
 
 ---
 

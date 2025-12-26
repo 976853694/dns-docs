@@ -1,54 +1,40 @@
 {
   "zh": [
     {
-      "title": "快速开始",
-      "path": "/guide/getting-started",
-      "content": "本指南将帮助你快速了解 DNS 文档系统的基本使用方法。",
-      "keywords": ["入门", "开始", "DNS", "文档"]
+      "title": "文档首页",
+      "path": "/guide/index",
+      "content": "Cloudflare DNS 二级域名分发系统文档中心，快速开始部署和配置。",
+      "keywords": ["首页", "DNS", "Cloudflare", "域名分发", "文档"]
     },
     {
-      "title": "安装配置",
+      "title": "安装部署",
       "path": "/guide/installation",
-      "content": "详细介绍如何安装和配置 DNS 服务。",
-      "keywords": ["安装", "配置", "部署"]
+      "content": "Docker Compose 部署指南，环境要求，快速部署，Nginx 反向代理配置。",
+      "keywords": ["安装", "部署", "Docker", "Nginx", "配置"]
     },
     {
-      "title": "DNS 概述",
-      "path": "/basics/overview",
-      "content": "DNS 域名系统的基本概念和工作原理介绍。",
-      "keywords": ["DNS", "域名", "解析", "原理"]
+      "title": "使用指南",
+      "path": "/guide/usage",
+      "content": "管理员配置流程，用户使用流程，Cloudflare 账户配置，套餐管理，DNS 记录管理。",
+      "keywords": ["使用", "指南", "配置", "管理", "DNS记录"]
     },
     {
-      "title": "记录类型",
-      "path": "/basics/record-types",
-      "content": "常见 DNS 记录类型详解：A、AAAA、CNAME、MX、TXT 等。",
-      "keywords": ["A记录", "CNAME", "MX", "TXT", "记录类型"]
-    }
-  ],
-  "en": [
-    {
-      "title": "Getting Started",
-      "path": "/guide/getting-started",
-      "content": "This guide will help you get started with the DNS documentation system.",
-      "keywords": ["start", "begin", "DNS", "docs"]
+      "title": "更新升级",
+      "path": "/guide/update",
+      "content": "版本更新和回滚指南，数据库迁移，常见更新问题解决。",
+      "keywords": ["更新", "升级", "回滚", "迁移", "版本"]
     },
     {
-      "title": "Installation",
-      "path": "/guide/installation",
-      "content": "Learn how to install and configure DNS services.",
-      "keywords": ["install", "config", "deploy"]
+      "title": "用户端 API",
+      "path": "/api/user",
+      "content": "用户端接口文档，认证模块，域名模块，DNS记录模块，安全设置模块。",
+      "keywords": ["API", "用户", "接口", "认证", "JWT"]
     },
     {
-      "title": "DNS Overview",
-      "path": "/basics/overview",
-      "content": "Introduction to DNS concepts and how it works.",
-      "keywords": ["DNS", "domain", "resolution", "basics"]
-    },
-    {
-      "title": "Record Types",
-      "path": "/basics/record-types",
-      "content": "Detailed explanation of DNS record types: A, AAAA, CNAME, MX, TXT, etc.",
-      "keywords": ["A record", "CNAME", "MX", "TXT", "record types"]
+      "title": "管理端 API",
+      "path": "/api/admin",
+      "content": "管理后台接口文档，用户管理，域名管理，套餐管理，卡密管理，系统设置。",
+      "keywords": ["API", "管理", "后台", "接口", "管理员"]
     }
   ]
 }

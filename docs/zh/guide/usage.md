@@ -233,8 +233,8 @@
 ## API 调用
 
 系统提供完整的 REST API，详见：
-- [用户端 API 文档](/api/user)
-- [管理端 API 文档](/api/admin)
+- [用户端 API 文档](#/zh/api/user)
+- [管理端 API 文档](#/zh/api/admin)
 
 ### 认证方式
 

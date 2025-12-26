@@ -6,7 +6,7 @@ const Router = (function() {
     let config = {
         defaultLang: 'zh',
         languages: ['zh', 'en'],
-        defaultPath: '/guide/getting-started'
+        defaultPath: '/guide/index'
     };
     
     let callbacks = [];

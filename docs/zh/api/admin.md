@@ -322,3 +322,208 @@ Authorization: Bearer <access_token>
 ### 删除优惠券
 
 **DELETE** `/api/admin/coupons/{coupon_id}`
+
+
+---
+
+## 订单管理模块
+
+### 获取购买记录列表
+
+**GET** `/api/admin/purchase-records`
+
+#### 查询参数
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| page | int | 否 | 页码，默认1 |
+| per_page | int | 否 | 每页数量，默认20 |
+| user_id | int | 否 | 按用户ID筛选 |
+| search | string | 否 | 搜索(域名/套餐名) |
+
+---
+
+### 删除购买记录
+
+**DELETE** `/api/admin/purchase-records/{record_id}`
+
+---
+
+## DNS记录管理模块
+
+### 获取所有DNS记录
+
+**GET** `/api/admin/dns-records`
+
+#### 查询参数
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| domain_id | int | 否 | 筛选主域名 |
+| source | string | 否 | 来源(system/cloudflare/all) |
+
+---
+
+### 更新DNS记录
+
+**PUT** `/api/admin/dns-records/{record_id}`
+
+---
+
+### 删除DNS记录
+
+**DELETE** `/api/admin/dns-records/{record_id}`
+
+---
+
+## 公告管理模块
+
+### 获取公告列表
+
+**GET** `/api/admin/announcements`
+
+---
+
+### 创建公告
+
+**POST** `/api/admin/announcements`
+
+#### 请求参数
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| title | string | 是 | 标题 |
+| content | string | 是 | 内容 |
+| type | string | 否 | 类型(info/warning/success/error)，默认info |
+| is_pinned | bool | 否 | 是否置顶，默认false |
+| is_popup | bool | 否 | 是否弹窗显示，默认false |
+| status | int | 否 | 状态(0草稿/1发布)，默认1 |
+
+---
+
+### 更新公告
+
+**PUT** `/api/admin/announcements/{ann_id}`
+
+---
+
+### 删除公告
+
+**DELETE** `/api/admin/announcements/{ann_id}`
+
+---
+
+## 系统设置模块
+
+### 获取系统设置
+
+**GET** `/api/admin/settings`
+
+---
+
+### 更新系统设置
+
+**PUT** `/api/admin/settings`
+
+#### 请求参数
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| site_name | string | 否 | 站点名称 |
+| site_description | string | 否 | 站点描述 |
+| site_logo | string | 否 | Logo URL |
+| admin_email | string | 否 | 管理员邮箱 |
+| smtp_host | string | 否 | SMTP服务器 |
+| smtp_port | string | 否 | SMTP端口 |
+| smtp_user | string | 否 | SMTP用户名 |
+| smtp_password | string | 否 | SMTP密码 |
+| smtp_ssl | string | 否 | 是否SSL(0/1) |
+
+---
+
+### 测试SMTP
+
+**POST** `/api/admin/settings/test-smtp`
+
+#### 请求参数
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| email | string | 是 | 测试邮箱 |
+
+---
+
+## 用户域名管理模块
+
+### 获取所有二级域名
+
+**GET** `/api/admin/subdomains`
+
+#### 查询参数
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| page | int | 否 | 页码 |
+| per_page | int | 否 | 每页数量 |
+| user_id | int | 否 | 按用户筛选 |
+| domain_id | int | 否 | 按主域名筛选 |
+| status | int | 否 | 状态筛选 |
+| search | string | 否 | 搜索域名 |
+| expired | string | 否 | 是否过期(1=已过期/0=未过期) |
+
+---
+
+### 更新二级域名
+
+**PUT** `/api/admin/subdomains/{subdomain_id}`
+
+#### 请求参数
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| status | int | 否 | 状态(0禁用/1正常/2待审核) |
+| expires_at | string | 否 | 到期时间(ISO格式) |
+| extend_days | int | 否 | 延期天数 |
+
+---
+
+### 删除二级域名
+
+**DELETE** `/api/admin/subdomains/{subdomain_id}`
+
+> 注意：删除域名会同时删除Cloudflare上的DNS记录
+
+---
+
+## IP黑名单管理模块
+
+### 获取IP黑名单列表
+
+**GET** `/api/admin/ip-blacklist`
+
+---
+
+### 添加IP到黑名单
+
+**POST** `/api/admin/ip-blacklist`
+
+#### 请求参数
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| ip_address | string | 是 | IP地址 |
+| reason | string | 否 | 封禁原因 |
+| duration_days | int | 否 | 封禁天数(不填为永久) |
+
+---
+
+### 从黑名单移除IP
+
+**DELETE** `/api/admin/ip-blacklist/{id}`
+
+---
+
+## 状态码说明
+
+| 状态码 | 说明 |
+|--------|------|
+| 200 | 成功 |
+| 201 | 创建成功 |
+| 400 | 请求参数错误 |
+| 401 | 未授权/Token无效 |
+| 403 | 权限不足(非管理员) |
+| 404 | 资源不存在 |
+| 409 | 资源冲突 |
+| 500 | 服务器错误 |
