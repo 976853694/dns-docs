@@ -1,4 +1,4 @@
-# Cloudflare DNS 二级域名分发系统 - 文档中心
+# 六趣DNS - 文档中心
 
 ## 快速导航
 
@@ -7,6 +7,7 @@
 | [安装部署](#/zh/guide/installation) | Docker Compose 部署指南 |
 | [使用指南](#/zh/guide/usage) | 管理员配置和用户使用说明 |
 | [更新升级](#/zh/guide/update) | 版本更新和回滚指南 |
+| [APP 客户端](#/zh/guide/app) | 多平台客户端使用说明 |
 | [用户端 API](#/zh/api/user) | 用户端接口文档 |
 | [管理端 API](#/zh/api/admin) | 管理后台接口文档 |
 

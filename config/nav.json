@@ -8,7 +8,8 @@
           { "text": "文档首页", "link": "/guide/index" },
           { "text": "安装部署", "link": "/guide/installation" },
           { "text": "使用指南", "link": "/guide/usage" },
-          { "text": "更新升级", "link": "/guide/update" }
+          { "text": "更新升级", "link": "/guide/update" },
+          { "text": "APP 客户端", "link": "/guide/app" }
         ]
       },
       {

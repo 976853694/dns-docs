@@ -3,7 +3,7 @@
     {
       "title": "文档首页",
       "path": "/guide/index",
-      "content": "Cloudflare DNS 二级域名分发系统文档中心，快速开始部署和配置。",
+      "content": "六趣DNS 二级域名分发系统文档中心，快速开始部署和配置。",
       "keywords": ["首页", "DNS", "Cloudflare", "域名分发", "文档"]
     },
     {
@@ -23,6 +23,12 @@
       "path": "/guide/update",
       "content": "版本更新和回滚指南，数据库迁移，常见更新问题解决。",
       "keywords": ["更新", "升级", "回滚", "迁移", "版本"]
+    },
+    {
+      "title": "APP 客户端",
+      "path": "/guide/app",
+      "content": "uni-app 多平台客户端，支持 Android、iOS、H5、微信小程序等。",
+      "keywords": ["APP", "客户端", "Android", "iOS", "小程序", "uni-app"]
     },
     {
       "title": "用户端 API",
