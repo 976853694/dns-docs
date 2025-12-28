@@ -5,7 +5,7 @@ DNS 文档系统 - 基于 GitHub Pages 的静态文档站点。
 ## 🌐 在线访问
 
 部署后可通过以下地址访问：
-- `https://<用户名>.github.io/dns-docs/`
+
 
 ## ✨ 功能特性
 
