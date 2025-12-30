@@ -9,6 +9,7 @@
           { "text": "安装部署", "link": "/guide/installation" },
           { "text": "使用指南", "link": "/guide/usage" },
           { "text": "更新升级", "link": "/guide/update" },
+          { "text": "更新日志", "link": "/guide/changelog" },
           { "text": "APP 客户端", "link": "/guide/app" }
         ]
       },

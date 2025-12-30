@@ -25,6 +25,12 @@
       "keywords": ["更新", "升级", "回滚", "迁移", "版本"]
     },
     {
+      "title": "更新日志",
+      "path": "/guide/changelog",
+      "content": "版本更新历史记录，新功能、修复内容。",
+      "keywords": ["更新日志", "版本", "changelog", "历史", "发布"]
+    },
+    {
       "title": "APP 客户端",
       "path": "/guide/app",
       "content": "uni-app 多平台客户端，支持 Android、iOS、H5、微信小程序等。",
