@@ -34,11 +34,6 @@
 
 **GET** `/api/admin/stats`
 
-#### 请求头
-```
-Authorization: Bearer <access_token>
-```
-
 #### 响应示例
 ```json
 {
@@ -50,11 +45,12 @@ Authorization: Bearer <access_token>
     "records_count": 1500,
     "today_new_users": 10,
     "today_new_subdomains": 25,
-    "today_logins": 50
+    "today_logins": 50,
+    "total_income": 10000.00,
+    "today_income": 500.00
   }
 }
 ```
-
 
 ---
 
@@ -141,6 +137,95 @@ Authorization: Bearer <access_token>
 
 ---
 
+### 解绑用户OAuth
+
+**POST** `/api/admin/users/{user_id}/unbind-oauth`
+
+#### 请求参数
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| provider | string | 是 | github/google/nodeloc |
+
+---
+
+## 渠道管理模块
+
+### 获取服务商列表
+
+**GET** `/api/admin/channels/providers`
+
+#### 响应示例
+```json
+{
+  "code": 200,
+  "data": {
+    "providers": [
+      {
+        "type": "cloudflare",
+        "name": "Cloudflare",
+        "credential_fields": [
+          {"name": "email", "label": "邮箱", "type": "text"},
+          {"name": "api_key", "label": "API Key", "type": "password"}
+        ]
+      }
+    ]
+  }
+}
+```
+
+---
+
+### 获取渠道列表
+
+**GET** `/api/admin/channels`
+
+---
+
+### 添加渠道
+
+**POST** `/api/admin/channels`
+
+#### 请求参数
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| name | string | 是 | 渠道名称 |
+| provider_type | string | 是 | 服务商类型 |
+| credentials | object | 是 | 凭据信息 |
+| remark | string | 否 | 备注 |
+
+---
+
+### 更新渠道
+
+**PUT** `/api/admin/channels/{channel_id}`
+
+---
+
+### 删除渠道
+
+**DELETE** `/api/admin/channels/{channel_id}`
+
+---
+
+### 验证渠道凭据
+
+**POST** `/api/admin/channels/{channel_id}/verify`
+
+---
+
+### 获取渠道域名列表
+
+**GET** `/api/admin/channels/{channel_id}/zones`
+
+#### 查询参数
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| keyword | string | 否 | 搜索关键词 |
+| page | int | 否 | 页码 |
+| page_size | int | 否 | 每页数量 |
+
+---
+
 ## 主域名管理模块
 
 ### 获取所有主域名
@@ -156,10 +241,11 @@ Authorization: Bearer <access_token>
 #### 请求参数
 | 参数 | 类型 | 必填 | 说明 |
 |------|------|------|------|
-| cf_account_id | int | 是 | Cloudflare账户ID |
+| channel_id | int | 是 | 渠道ID |
 | name | string | 是 | 域名 |
-| cf_zone_id | string | 是 | Cloudflare Zone ID |
-| allow_register | bool | 否 | 是否开放注册，默认true |
+| zone_id | string | 否 | Zone ID（不填则自动获取） |
+| description | string | 否 | 描述 |
+| allow_register | bool | 否 | 是否开放注册 |
 
 ---
 
@@ -175,43 +261,51 @@ Authorization: Bearer <access_token>
 
 > 注意：删除主域名会同时删除该域名下所有二级域名及其DNS记录
 
+---
+
+## 二级域名管理模块
+
+### 获取所有二级域名
+
+**GET** `/api/admin/subdomains`
+
+#### 查询参数
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| page | int | 否 | 页码 |
+| per_page | int | 否 | 每页数量 |
+| user_id | int | 否 | 按用户筛选 |
+| domain_id | int | 否 | 按主域名筛选 |
+| status | int | 否 | 状态筛选 |
+| search | string | 否 | 搜索域名 |
+| expired | string | 否 | 是否过期(1=已过期/0=未过期) |
 
 ---
 
-## Cloudflare账户管理模块
+### 获取二级域名的DNS记录
 
-### 获取CF账户列表
-
-**GET** `/api/admin/cf-accounts`
+**GET** `/api/admin/subdomains/{subdomain_id}/records`
 
 ---
 
-### 添加CF账户
+### 更新二级域名
 
-**POST** `/api/admin/cf-accounts`
+**PUT** `/api/admin/subdomains/{subdomain_id}`
 
 #### 请求参数
 | 参数 | 类型 | 必填 | 说明 |
 |------|------|------|------|
-| name | string | 是 | 账户名称 |
-| email | string | 是 | Cloudflare邮箱 |
-| auth_type | string | 是 | 认证方式(api_key/api_token) |
-| api_key | string | 否 | Global API Key(api_key方式) |
-| api_token | string | 否 | API Token(api_token方式) |
+| status | int | 否 | 状态(0禁用/1正常/2待审核) |
+| expires_at | string | 否 | 到期时间(ISO格式) |
+| extend_days | int | 否 | 延期天数 |
 
 ---
 
-### 更新CF账户
+### 删除二级域名
 
-**PUT** `/api/admin/cf-accounts/{account_id}`
+**DELETE** `/api/admin/subdomains/{subdomain_id}`
 
----
-
-### 删除CF账户
-
-**DELETE** `/api/admin/cf-accounts/{account_id}`
-
-> 注意：需先删除该账户下的所有域名
+> 注意：删除域名会同时删除DNS服务商上的DNS记录
 
 ---
 
@@ -238,6 +332,7 @@ Authorization: Bearer <access_token>
 | max_length | int | 否 | 最大长度，默认63 |
 | max_records | int | 否 | 最大记录数(-1为无限)，默认10 |
 | description | string | 否 | 套餐描述 |
+| sort_order | int | 否 | 排序值 |
 
 ---
 
@@ -288,6 +383,23 @@ Authorization: Bearer <access_token>
 
 ---
 
+### 禁用卡密
+
+**PUT** `/api/admin/redeem-codes/{code_id}/disable`
+
+---
+
+### 批量删除卡密
+
+**POST** `/api/admin/redeem-codes/batch-delete`
+
+#### 请求参数
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| ids | array | 是 | 卡密ID数组 |
+
+---
+
 ## 优惠券管理模块
 
 ### 获取优惠券列表
@@ -310,6 +422,9 @@ Authorization: Bearer <access_token>
 | min_amount | float | 否 | 最低消费，默认0 |
 | total_count | int | 否 | 总数量(-1为无限)，默认-1 |
 | per_user_limit | int | 否 | 每人限用次数，默认1 |
+| applicable_type | string | 否 | 适用产品(all/domain/vhost) |
+| excluded_domains | array | 否 | 排除的域名ID列表 |
+| expires_at | string | 否 | 过期时间 |
 
 ---
 
@@ -322,7 +437,6 @@ Authorization: Bearer <access_token>
 ### 删除优惠券
 
 **DELETE** `/api/admin/coupons/{coupon_id}`
-
 
 ---
 
@@ -348,6 +462,17 @@ Authorization: Bearer <access_token>
 
 ---
 
+### 批量删除购买记录
+
+**POST** `/api/admin/purchase-records/batch-delete`
+
+#### 请求参数
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| ids | array | 是 | 记录ID数组 |
+
+---
+
 ## DNS记录管理模块
 
 ### 获取所有DNS记录
@@ -358,7 +483,8 @@ Authorization: Bearer <access_token>
 | 参数 | 类型 | 必填 | 说明 |
 |------|------|------|------|
 | domain_id | int | 否 | 筛选主域名 |
-| source | string | 否 | 来源(system/cloudflare/all) |
+| subdomain_id | int | 否 | 筛选二级域名 |
+| type | string | 否 | 记录类型 |
 
 ---
 
@@ -423,17 +549,46 @@ Authorization: Bearer <access_token>
 **PUT** `/api/admin/settings`
 
 #### 请求参数
-| 参数 | 类型 | 必填 | 说明 |
-|------|------|------|------|
-| site_name | string | 否 | 站点名称 |
-| site_description | string | 否 | 站点描述 |
-| site_logo | string | 否 | Logo URL |
-| admin_email | string | 否 | 管理员邮箱 |
-| smtp_host | string | 否 | SMTP服务器 |
-| smtp_port | string | 否 | SMTP端口 |
-| smtp_user | string | 否 | SMTP用户名 |
-| smtp_password | string | 否 | SMTP密码 |
-| smtp_ssl | string | 否 | 是否SSL(0/1) |
+| 参数 | 类型 | 说明 |
+|------|------|------|
+| site_name | string | 站点名称 |
+| site_description | string | 站点描述 |
+| site_logo | string | Logo URL |
+| site_favicon | string | Favicon URL |
+| site_url | string | 站点URL |
+| admin_email | string | 管理员邮箱 |
+| icp_number | string | 备案号 |
+| register_enabled | bool | 是否开放注册 |
+| default_max_domains | int | 新用户默认域名配额 |
+| smtp_host | string | SMTP服务器 |
+| smtp_port | int | SMTP端口 |
+| smtp_user | string | SMTP用户名 |
+| smtp_password | string | SMTP密码 |
+| smtp_ssl | bool | 是否SSL |
+| smtp_sender_name | string | 发件人名称 |
+| aliyun_dm_enabled | bool | 阿里云邮件推送开关 |
+| aliyun_dm_access_key | string | 阿里云AccessKey |
+| aliyun_dm_access_secret | string | 阿里云AccessSecret |
+| aliyun_dm_region | string | 阿里云区域 |
+| aliyun_dm_sender | string | 发信地址 |
+| turnstile_enabled | bool | Turnstile开关 |
+| turnstile_site_key | string | Turnstile Site Key |
+| turnstile_secret_key | string | Turnstile Secret Key |
+| captcha_login | bool | 登录验证码开关 |
+| captcha_register | bool | 注册验证码开关 |
+| captcha_forgot_password | bool | 找回密码验证码开关 |
+| captcha_change_password | bool | 修改密码验证码开关 |
+| captcha_change_email | bool | 修改邮箱验证码开关 |
+| email_suffix_enabled | bool | 邮箱后缀限制开关 |
+| email_suffix_mode | string | 模式(whitelist/blacklist) |
+| email_suffix_list | string | 后缀列表(每行一个) |
+| github_client_id | string | GitHub Client ID |
+| github_client_secret | string | GitHub Client Secret |
+| google_client_id | string | Google Client ID |
+| google_client_secret | string | Google Client Secret |
+| nodeloc_client_id | string | NodeLoc Client ID |
+| nodeloc_client_secret | string | NodeLoc Client Secret |
+| analytics_code | string | 统计代码 |
 
 ---
 
@@ -448,43 +603,14 @@ Authorization: Bearer <access_token>
 
 ---
 
-## 用户域名管理模块
+### 测试阿里云邮件
 
-### 获取所有二级域名
-
-**GET** `/api/admin/subdomains`
-
-#### 查询参数
-| 参数 | 类型 | 必填 | 说明 |
-|------|------|------|------|
-| page | int | 否 | 页码 |
-| per_page | int | 否 | 每页数量 |
-| user_id | int | 否 | 按用户筛选 |
-| domain_id | int | 否 | 按主域名筛选 |
-| status | int | 否 | 状态筛选 |
-| search | string | 否 | 搜索域名 |
-| expired | string | 否 | 是否过期(1=已过期/0=未过期) |
-
----
-
-### 更新二级域名
-
-**PUT** `/api/admin/subdomains/{subdomain_id}`
+**POST** `/api/admin/settings/test-aliyun-dm`
 
 #### 请求参数
 | 参数 | 类型 | 必填 | 说明 |
 |------|------|------|------|
-| status | int | 否 | 状态(0禁用/1正常/2待审核) |
-| expires_at | string | 否 | 到期时间(ISO格式) |
-| extend_days | int | 否 | 延期天数 |
-
----
-
-### 删除二级域名
-
-**DELETE** `/api/admin/subdomains/{subdomain_id}`
-
-> 注意：删除域名会同时删除Cloudflare上的DNS记录
+| email | string | 是 | 测试邮箱 |
 
 ---
 
@@ -493,6 +619,13 @@ Authorization: Bearer <access_token>
 ### 获取IP黑名单列表
 
 **GET** `/api/admin/ip-blacklist`
+
+#### 查询参数
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| page | int | 否 | 页码 |
+| per_page | int | 否 | 每页数量 |
+| search | string | 否 | 搜索IP |
 
 ---
 
@@ -512,6 +645,401 @@ Authorization: Bearer <access_token>
 ### 从黑名单移除IP
 
 **DELETE** `/api/admin/ip-blacklist/{id}`
+
+---
+
+## 邮件模板管理模块
+
+### 获取邮件模板列表
+
+**GET** `/api/admin/email-templates`
+
+---
+
+### 获取邮件模板详情
+
+**GET** `/api/admin/email-templates/{template_id}`
+
+---
+
+### 更新邮件模板
+
+**PUT** `/api/admin/email-templates/{template_id}`
+
+#### 请求参数
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| subject | string | 否 | 邮件主题 |
+| content | string | 否 | 邮件内容 |
+| enabled | bool | 否 | 是否启用 |
+
+---
+
+### 重置邮件模板
+
+**POST** `/api/admin/email-templates/{template_id}/reset`
+
+---
+
+### 发送测试邮件
+
+**POST** `/api/admin/email-templates/{template_id}/test`
+
+#### 请求参数
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| email | string | 是 | 测试邮箱 |
+
+---
+
+## APP版本管理模块
+
+### 获取版本列表
+
+**GET** `/api/admin/app-versions`
+
+---
+
+### 创建版本
+
+**POST** `/api/admin/app-versions`
+
+#### 请求参数
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| version | string | 是 | 版本号 |
+| version_code | int | 是 | 版本代码 |
+| platform | string | 是 | 平台(android/ios) |
+| download_url | string | 是 | 下载地址 |
+| changelog | string | 否 | 更新日志 |
+| force_update | bool | 否 | 是否强制更新 |
+
+---
+
+### 更新版本
+
+**PUT** `/api/admin/app-versions/{version_id}`
+
+---
+
+### 删除版本
+
+**DELETE** `/api/admin/app-versions/{version_id}`
+
+---
+
+## 操作日志模块
+
+### 获取操作日志
+
+**GET** `/api/admin/logs`
+
+#### 查询参数
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| page | int | 否 | 页码 |
+| per_page | int | 否 | 每页数量 |
+| user_id | int | 否 | 用户ID |
+| action | string | 否 | 操作类型 |
+| target_type | string | 否 | 目标类型 |
+
+
+---
+
+## 虚拟主机管理模块
+
+### 获取虚拟主机统计
+
+**GET** `/api/admin/vhost/stats`
+
+#### 响应示例
+```json
+{
+  "code": 200,
+  "data": {
+    "total_income": 10000.00,
+    "month_income": 1000.00,
+    "instances_count": 50,
+    "servers_count": 3
+  }
+}
+```
+
+---
+
+### 服务器管理
+
+#### 获取服务器列表
+
+**GET** `/api/admin/vhost/servers`
+
+---
+
+#### 添加服务器
+
+**POST** `/api/admin/vhost/servers`
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| name | string | 是 | 服务器名称 |
+| panel_url | string | 是 | 宝塔面板地址 |
+| api_key | string | 是 | API Key |
+| max_sites | int | 否 | 最大站点数 |
+| remark | string | 否 | 备注 |
+
+---
+
+#### 更新服务器
+
+**PUT** `/api/admin/vhost/servers/{server_id}`
+
+---
+
+#### 删除服务器
+
+**DELETE** `/api/admin/vhost/servers/{server_id}`
+
+---
+
+#### 测试服务器连接
+
+**POST** `/api/admin/vhost/servers/{server_id}/test`
+
+---
+
+### 套餐管理
+
+#### 获取套餐列表
+
+**GET** `/api/admin/vhost/plans`
+
+---
+
+#### 创建套餐
+
+**POST** `/api/admin/vhost/plans`
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| name | string | 是 | 套餐名称 |
+| price | float | 是 | 价格 |
+| duration_days | int | 是 | 有效期天数 |
+| disk_space | int | 是 | 磁盘空间(MB) |
+| bandwidth | int | 是 | 月流量(MB)，-1为无限 |
+| max_domains | int | 是 | 最大域名数 |
+| max_databases | int | 是 | 最大数据库数 |
+| server_id | int | 否 | 指定服务器ID |
+| description | string | 否 | 描述 |
+
+---
+
+#### 更新套餐
+
+**PUT** `/api/admin/vhost/plans/{plan_id}`
+
+---
+
+#### 删除套餐
+
+**DELETE** `/api/admin/vhost/plans/{plan_id}`
+
+---
+
+### 主机实例管理
+
+#### 获取实例列表
+
+**GET** `/api/admin/vhost/instances`
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| page | int | 否 | 页码 |
+| per_page | int | 否 | 每页数量 |
+| status | int | 否 | 状态筛选 |
+| user_id | int | 否 | 用户ID |
+| search | string | 否 | 搜索域名 |
+
+---
+
+#### 更新实例
+
+**PUT** `/api/admin/vhost/instances/{instance_id}`
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| status | int | 否 | 状态(0删除/1正常/2暂停) |
+| expires_at | string | 否 | 到期时间 |
+
+---
+
+#### 删除实例
+
+**DELETE** `/api/admin/vhost/instances/{instance_id}`
+
+---
+
+#### 批量删除实例
+
+**POST** `/api/admin/vhost/instances/batch-delete`
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| ids | array | 是 | 实例ID数组 |
+
+---
+
+### 订单管理
+
+#### 获取订单列表
+
+**GET** `/api/admin/vhost/orders`
+
+---
+
+#### 删除订单
+
+**DELETE** `/api/admin/vhost/orders/{order_id}`
+
+---
+
+#### 批量删除订单
+
+**POST** `/api/admin/vhost/orders/batch-delete`
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| ids | array | 是 | 订单ID数组 |
+
+---
+
+## 托管商管理模块
+
+### 获取托管申请列表
+
+**GET** `/api/admin/host/applications`
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| page | int | 否 | 页码 |
+| per_page | int | 否 | 每页数量 |
+| status | int | 否 | 状态筛选 |
+
+---
+
+### 审核托管申请
+
+**POST** `/api/admin/host/applications/{application_id}/review`
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| action | string | 是 | approve/reject |
+| reason | string | 否 | 拒绝原因 |
+
+---
+
+### 获取托管商列表
+
+**GET** `/api/admin/host/hosts`
+
+---
+
+### 更新托管商
+
+**PUT** `/api/admin/host/hosts/{host_id}`
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| status | int | 否 | 状态 |
+| commission_rate | float | 否 | 抽成比例 |
+
+---
+
+### 获取托管设置
+
+**GET** `/api/admin/host/settings`
+
+---
+
+### 更新托管设置
+
+**PUT** `/api/admin/host/settings`
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| host_enabled | bool | 否 | 是否启用托管功能 |
+| host_default_commission | float | 否 | 默认抽成比例 |
+| host_min_apply_reason | int | 否 | 申请理由最小字数 |
+
+---
+
+## Telegram机器人管理模块
+
+### 获取Telegram设置
+
+**GET** `/api/admin/telegram/settings`
+
+---
+
+### 更新Telegram设置
+
+**PUT** `/api/admin/telegram/settings`
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| bot_token | string | 是 | Bot Token |
+| enabled | bool | 否 | 是否启用 |
+
+---
+
+### 获取绑定用户列表
+
+**GET** `/api/admin/telegram/users`
+
+---
+
+### 解绑用户
+
+**DELETE** `/api/admin/telegram/users/{user_id}`
+
+---
+
+## 数据导入导出模块
+
+### 导出用户数据
+
+**GET** `/api/admin/export/users`
+
+---
+
+### 导出二级域名数据
+
+**GET** `/api/admin/export/subdomains`
+
+---
+
+### 导出卡密数据
+
+**GET** `/api/admin/export/redeem-codes`
+
+---
+
+### 导入用户数据
+
+**POST** `/api/admin/import/users`
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| file | file | 是 | CSV文件 |
+
+---
+
+### 导入卡密数据
+
+**POST** `/api/admin/import/redeem-codes`
+
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| file | file | 是 | CSV文件 |
 
 ---
 

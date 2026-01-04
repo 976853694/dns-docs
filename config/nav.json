@@ -17,7 +17,8 @@
         "text": "API 文档",
         "children": [
           { "text": "用户端 API", "link": "/api/user" },
-          { "text": "管理端 API", "link": "/api/admin" }
+          { "text": "管理端 API", "link": "/api/admin" },
+          { "text": "开放 API", "link": "/api/open" }
         ]
       }
     ]
