@@ -10,13 +10,34 @@
 
 ## 一键安装
 
-使用脚本快速安装：
+### 方式一：内置数据库（推荐）
+
+适用于新手或单机部署，MySQL 和 Redis 都在 Docker 容器中运行。
 
 ```bash
 curl -fsSL https://6qu.cc/dns/install.sh | bash
 ```
 
 安装完成后，脚本会自动配置并启动服务。
+
+---
+
+### 方式二：外置数据库
+
+适用于已有 MySQL 数据库的情况，或需要数据库高可用的场景。
+
+```bash
+curl -fsSL https://6qu.cc/dns2/install.sh | bash
+```
+
+> ⚠️ **注意**：使用外置数据库版本前，请确保：
+> - 已有可用的 MySQL 数据库（5.6+ ）
+> - 数据库允许远程连接
+> - 已创建数据库和用户，并授予相应权限
+
+**准备数据库**：
+
+安装脚本会提示输入数据库连接信息。
 
 ---
 
@@ -57,55 +78,6 @@ dns
 | 6 | 更新程序 |
 | 7 | 卸载程序 |
 | 0 | 退出 |
-
----
-
-## Nginx 反向代理
-
-### HTTP 配置
-
-```nginx
-server {
-    listen 80;
-    server_name dns.example.com;
-
-    location / {
-        proxy_pass http://127.0.0.1:5000;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-}
-```
-
-### HTTPS 配置（推荐）
-
-```nginx
-server {
-    listen 443 ssl http2;
-    server_name dns.example.com;
-
-    ssl_certificate /path/to/cert.pem;
-    ssl_certificate_key /path/to/key.pem;
-    ssl_protocols TLSv1.2 TLSv1.3;
-    ssl_ciphers HIGH:!aNULL:!MD5;
-
-    location / {
-        proxy_pass http://127.0.0.1:5000;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-}
-
-server {
-    listen 80;
-    server_name dns.example.com;
-    return 301 https://$server_name$request_uri;
-}
-```
 
 ---
 

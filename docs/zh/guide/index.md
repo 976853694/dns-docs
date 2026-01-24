@@ -15,13 +15,8 @@
 | 文档 | 说明 |
 |------|------|
 | [安装部署](#/zh/guide/installation) | Docker Compose 部署指南 |
-| [使用指南](#/zh/guide/usage) | 管理员配置和用户使用说明 |
 | [更新升级](#/zh/guide/update) | 版本更新和回滚指南 |
-| [更新日志](#/zh/guide/changelog) | 版本更新历史记录 |
-| [APP 客户端](#/zh/guide/app) | 多平台客户端使用说明 |
-| [用户端 API](#/zh/api/user) | 用户端接口文档 |
-| [管理端 API](#/zh/api/admin) | 管理后台接口文档 |
-| [开放 API](#/zh/api/open) | 外部系统集成接口文档 |
+
 
 ---
 
@@ -100,39 +95,6 @@
 
 ---
 
-## 快速开始
-
-### 1. 部署系统
-
-```bash
-# 创建目录
-mkdir dns && cd dns
-
-# 创建 docker-compose.yml（参考安装文档）
-
-# 启动服务
-docker compose up -d
-```
-
-### 2. 初始配置
-
-1. 访问 http://服务器IP:5000/admin
-2. 登录：`admin@qq.com` / `admin123`
-3. **立即修改管理员密码**
-4. 添加DNS渠道（配置服务商凭据）
-5. 添加主域名（关联渠道）
-6. 创建套餐（设置价格和时长）
-
-### 3. 更新系统
-
-```bash
-docker compose pull && docker compose down && docker compose up -d
-```
-
----
-
-
----
 
 ## 获取帮助
 
