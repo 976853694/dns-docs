@@ -7,18 +7,7 @@
         "children": [
           { "text": "文档首页", "link": "/guide/index" },
           { "text": "安装部署", "link": "/guide/installation" },
-          { "text": "使用指南", "link": "/guide/usage" },
-          { "text": "更新升级", "link": "/guide/update" },
-          { "text": "更新日志", "link": "/guide/changelog" },
-          { "text": "APP 客户端", "link": "/guide/app" }
-        ]
-      },
-      {
-        "text": "API 文档",
-        "children": [
-          { "text": "用户端 API", "link": "/api/user" },
-          { "text": "管理端 API", "link": "/api/admin" },
-          { "text": "开放 API", "link": "/api/open" }
+          { "text": "更新升级", "link": "/guide/update" }
         ]
       }
     ]

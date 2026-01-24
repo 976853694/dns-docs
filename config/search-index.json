@@ -13,46 +13,10 @@
       "keywords": ["安装", "部署", "Docker", "Nginx", "配置", "备份", "恢复", "环境变量"]
     },
     {
-      "title": "使用指南",
-      "path": "/guide/usage",
-      "content": "管理员配置流程，DNS渠道管理（13种服务商），域名套餐管理，用户管理，卡密优惠券，公告邮件模板，虚拟主机分发，域名托管商，Telegram机器人。",
-      "keywords": ["使用", "指南", "配置", "管理", "DNS记录", "渠道", "套餐", "虚拟主机", "托管商", "Telegram"]
-    },
-    {
       "title": "更新升级",
       "path": "/guide/update",
       "content": "版本更新和回滚指南，数据库迁移，常见更新问题解决。",
       "keywords": ["更新", "升级", "回滚", "迁移", "版本"]
-    },
-    {
-      "title": "更新日志",
-      "path": "/guide/changelog",
-      "content": "版本更新历史记录，后端更新日志，APP客户端更新日志，新功能、修复内容。",
-      "keywords": ["更新日志", "版本", "changelog", "历史", "发布", "后端", "APP"]
-    },
-    {
-      "title": "APP 客户端",
-      "path": "/guide/app",
-      "content": "uni-app 多平台客户端，支持 Android、iOS、H5、微信小程序，开发环境配置，打包发布，项目结构。",
-      "keywords": ["APP", "客户端", "Android", "iOS", "小程序", "uni-app", "HBuilderX", "打包"]
-    },
-    {
-      "title": "用户端 API",
-      "path": "/api/user",
-      "content": "用户端接口文档，认证模块（登录注册OAuth），域名模块，DNS记录模块，安全设置模块（2FA、API密钥），虚拟主机模块（文件管理、SSL、PHP版本）。",
-      "keywords": ["API", "用户", "接口", "认证", "JWT", "域名", "DNS", "2FA", "虚拟主机", "SSL"]
-    },
-    {
-      "title": "管理端 API",
-      "path": "/api/admin",
-      "content": "管理后台接口文档，统计图表，用户管理，域名管理，渠道管理，套餐管理，卡密优惠券，订单管理，公告管理，系统设置，虚拟主机管理，托管商管理，邮件模板，IP黑名单，Telegram机器人。",
-      "keywords": ["API", "管理", "后台", "接口", "管理员", "统计", "渠道", "套餐", "虚拟主机", "托管商"]
-    },
-    {
-      "title": "开放 API",
-      "path": "/api/open",
-      "content": "开放API接口文档，签名认证机制（API Key + Secret），用户信息，域名管理，子域名管理（购买续费删除），DNS记录管理（增删改查）。",
-      "keywords": ["API", "开放", "签名", "认证", "域名", "子域名", "DNS记录", "对接", "集成"]
     }
   ]
 }

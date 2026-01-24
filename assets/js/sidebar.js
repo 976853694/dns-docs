@@ -220,8 +220,14 @@ const Sidebar = (function() {
         }
         if (overlayEl) {
             overlayEl.classList.add('active');
+            overlayEl.setAttribute('aria-hidden', 'false');
+        }
+        if (menuToggleEl) {
+            menuToggleEl.classList.add('active');
+            menuToggleEl.setAttribute('aria-expanded', 'true');
         }
         document.body.style.overflow = 'hidden';
+        document.body.classList.add('menu-open');
     }
     
     /**
@@ -233,8 +239,14 @@ const Sidebar = (function() {
         }
         if (overlayEl) {
             overlayEl.classList.remove('active');
+            overlayEl.setAttribute('aria-hidden', 'true');
+        }
+        if (menuToggleEl) {
+            menuToggleEl.classList.remove('active');
+            menuToggleEl.setAttribute('aria-expanded', 'false');
         }
         document.body.style.overflow = '';
+        document.body.classList.remove('menu-open');
     }
     
     /**

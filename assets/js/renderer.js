@@ -31,6 +31,55 @@ const Renderer = (function() {
                 gfm: true
             });
         }
+        
+        // 初始化TOC滚动同步
+        initTOCScrollSync();
+    }
+    
+    /**
+     * 初始化TOC滚动同步
+     */
+    function initTOCScrollSync() {
+        let ticking = false;
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    updateActiveTOCItem();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    }
+    
+    /**
+     * 更新TOC中的活动项
+     */
+    function updateActiveTOCItem() {
+        if (!tocEl) return;
+        
+        const headings = document.querySelectorAll('.doc-content h1[id], .doc-content h2[id], .doc-content h3[id]');
+        if (headings.length === 0) return;
+        
+        const scrollPosition = window.scrollY + 100; // 偏移量
+        let activeHeading = null;
+        
+        // 找到当前可见的标题
+        headings.forEach(heading => {
+            if (heading.offsetTop <= scrollPosition) {
+                activeHeading = heading;
+            }
+        });
+        
+        // 更新TOC链接的active状态
+        const tocLinks = tocEl.querySelectorAll('a');
+        tocLinks.forEach(link => {
+            link.classList.remove('active');
+            if (activeHeading && link.getAttribute('href') === `#${activeHeading.id}`) {
+                link.classList.add('active');
+            }
+        });
     }
     
     /**
